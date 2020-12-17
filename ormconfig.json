@@ -1,0 +1,13 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "piupiuwer",
+    "database": "piupiuwer",
+    "migrations": ["./src/shared/database/migrations/*.ts"],
+    "entities": ["./src/useCases/*/entities/*.ts"],
+    "cli": {
+         "migrationsDir": "./src/shared/database/migrations/"
+     }
+ }
