@@ -9,6 +9,15 @@ class UserRepository implements IUserRepository {
         this.ormRepository = getRepository(User)
     }
 
+    public async findByUsername(username: string): Promise<User | undefined> {
+        const searchedUser = await this.ormRepository.findOne({
+            where: {username}
+        })
+
+        return searchedUser;
+
+    }
+
     public async create({username, email, password}: CreateUserDTO): Promise<User> {
         const user = this.ormRepository.create({
             username,
@@ -20,6 +29,8 @@ class UserRepository implements IUserRepository {
 
         return user;
     }
+
+    
 }
 
 export default UserRepository;
