@@ -1,4 +1,4 @@
-import User from "../entities/User";
+import User from "../../entities/User";
 
 export interface CreateUserDTO{
     username: string;
@@ -9,4 +9,5 @@ export interface CreateUserDTO{
 export interface IUserRepository {
     create(createuserDTO: CreateUserDTO): Promise<User>,
     findByUsername(username: string): Promise<User | undefined>
+    findById(userId: string): Promise<User | undefined>
 }

@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm';
-import User from '../entities/User';
+import User from '../../entities/User';
 import { CreateUserDTO, IUserRepository } from './IUserRepository';
 
 class UserRepository implements IUserRepository {
@@ -7,6 +7,11 @@ class UserRepository implements IUserRepository {
 
     constructor() {
         this.ormRepository = getRepository(User)
+    }
+
+    public async findById(userId: string): Promise<User | undefined> {
+        const user = await this.ormRepository.findByIds([userId]);
+        return user[0];
     }
 
     public async findByUsername(username: string): Promise<User | undefined> {

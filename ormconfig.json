@@ -4,7 +4,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "piupiuwer",
-    "database": "piupiuwerdb",
+    "database": "postgres",
     "migrations": ["./src/shared/database/migrations/*.ts"],
     "entities": ["./src/useCases/*/entities/*.ts"],
     "cli": {

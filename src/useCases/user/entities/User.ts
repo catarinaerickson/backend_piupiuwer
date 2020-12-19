@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import Profile from './Profile';
 
 @Entity('users')
 export default class User {
@@ -13,4 +14,11 @@ export default class User {
 
     @Column({unique: true})
     email: string;
+
+    @Column()
+    profileId: string;
+
+    @OneToOne(() => Profile, profile => profile.user)
+    @JoinColumn()
+    profile: Profile;
 }

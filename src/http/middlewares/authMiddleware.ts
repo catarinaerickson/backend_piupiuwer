@@ -1,10 +1,19 @@
-import AuthError from 'errors/AuthError';
-import express, {Request, Response, NextFunction} from 'express';
+import { Request, Response, NextFunction} from 'express';
+import * as jwt from 'jsonwebtoken';
 
-export function authMiddleware(err: Error, req: Request, res: Response, _: NextFunction){
-    if(err instanceof AuthError){
-        return res.status(err.status).json({message: err.message})
+export const auth = async (req: Request, res: Response, next: NextFunction) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).json({message: 'token is required'})
     }
+    
+    const [_, token] = authHeader.split(' ');
 
-    return res.status(500).json({message: 'internal server error'})
+    try {
+        await jwt.verify(token, process.env.APP_SECRET as string)
+        next();
+    } catch (error) {
+        return res.status(401).json({message: 'Invalid token'})
+    }
 }

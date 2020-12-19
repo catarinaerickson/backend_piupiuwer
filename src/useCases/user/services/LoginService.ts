@@ -2,8 +2,8 @@ import { compare } from "bcryptjs";
 import AuthError from "errors/AuthError";
 import { sign } from "jsonwebtoken";
 import User from "../entities/User";
-import { IUserRepository } from "../repositories/IUserRepository";
-import UserRepository from "../repositories/UserRepository";
+import { IUserRepository } from "../repositories/user/IUserRepository";
+import UserRepository from "../repositories/user/UserRepository";
 
 interface Request {
     username: string,
