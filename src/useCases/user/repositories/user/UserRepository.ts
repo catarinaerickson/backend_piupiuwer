@@ -9,6 +9,12 @@ class UserRepository implements IUserRepository {
         this.ormRepository = getRepository(User)
     }
 
+
+    public async list(): Promise<User[]> {
+        const users = await this.ormRepository.find();
+        return users;
+    }
+
     public async findById(userId: string): Promise<User | undefined> {
         const user = await this.ormRepository.findByIds([userId]);
         return user[0];
@@ -34,6 +40,8 @@ class UserRepository implements IUserRepository {
 
         return user;
     }
+
+    
 
     
 }

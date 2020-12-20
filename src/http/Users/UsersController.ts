@@ -3,6 +3,7 @@ import UserRepository from "@useCases/user/repositories/user/UserRepository";
 import CreateProfileService from "@useCases/user/services/CreateProfileService";
 import CreateUserService from "@useCases/user/services/CreateUserService";
 import EditProfileService from "@useCases/user/services/EditProfileService";
+import ListUsersService from "@useCases/user/services/ListUsersService";
 import LoginService from "@useCases/user/services/LoginService";
 import { Request, Response } from "express";
 
@@ -65,6 +66,17 @@ class UsersController{
          } catch (err) {
              return res.status(400).json({error: err.message});
          }
+    }
+
+    public async list(eq: Request, res: Response):  Promise<Response> {
+        try {
+            const userRepository = new UserRepository();
+            const listUsers = new ListUsersService(userRepository);
+            const users = await listUsers.execute()
+            return res.status(200).json(users)
+        } catch (err) {
+            return res.status(400).json({error: err.message})
+        }
     }
 }
 

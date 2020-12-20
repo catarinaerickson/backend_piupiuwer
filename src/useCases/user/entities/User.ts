@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import Piu from '@useCases/piu/entities/Piu';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import Profile from './Profile';
 
 @Entity('users')
@@ -18,7 +19,10 @@ export default class User {
     @Column()
     profileId: string;
 
-    @OneToOne(() => Profile, profile => profile.user)
+    @OneToOne(() => Profile, profile => profile.user,{eager: true})
     @JoinColumn()
     profile: Profile;
+
+    @OneToMany(() => Piu, piu => piu.user, {eager: true})
+    pius: Piu[]
 }
