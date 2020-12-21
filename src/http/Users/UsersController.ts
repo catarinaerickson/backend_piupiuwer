@@ -1,6 +1,5 @@
 import ProfileRepository from "@useCases/user/repositories/profile/ProfileRepository";
 import UserRepository from "@useCases/user/repositories/user/UserRepository";
-import CreateProfileService from "@useCases/user/services/CreateProfileService";
 import CreateUserService from "@useCases/user/services/CreateUserService";
 import EditProfileService from "@useCases/user/services/EditProfileService";
 import ListUsersService from "@useCases/user/services/ListUsersService";
@@ -40,21 +39,7 @@ class UsersController{
         
     }
 
-    public async createProfile(req: Request, res: Response): Promise<Response> {
-        const {userId, first_name, last_name, bio, photo} = req.body;
-        try {
-            const userRepository = new UserRepository();
-            const profileRepository = new ProfileRepository();
-            const createProfile = new CreateProfileService(profileRepository, userRepository)
-            const profile = await createProfile.execute({userId, first_name, last_name, bio, photo})
-            return res.status(201).json({profile})
-             
-         } catch (err) {
-             return res.status(400).json({error: err.message});
-         }
-    }
-
-    public async editProfile(req: Request, res: Response): Promise<Response> {
+    public async alterProfile(req: Request, res: Response): Promise<Response> {
         const {userId, first_name, last_name, bio, photo} = req.body;
         try {
             const userRepository = new UserRepository();

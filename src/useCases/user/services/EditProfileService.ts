@@ -27,8 +27,13 @@ class EditProfileService {
             throw Error('user not found')
         }
         const profileId = user.profileId
-        const profile = await this.profileRepository.edit({profileId, first_name, last_name, bio, photo})
+        
+        if(profileId == null){
+            const profile = await this.profileRepository.create({first_name, last_name, bio, photo, user});
+            return profile;
+        }
 
+        const profile = await this.profileRepository.edit({profileId, first_name, last_name, bio, photo})
         return profile;
     }
 }

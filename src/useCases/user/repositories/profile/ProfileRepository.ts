@@ -19,6 +19,8 @@ class ProfileRepository implements IProfileRepository{
         const profile = await this.ormRepository.update(profileId, {first_name, last_name, bio, photo})        
         return profile.raw[1];
     }       
+
+    
     
 }
 

@@ -17,6 +17,7 @@ export interface CreateProfileDTO {
     user: User;
 }
 
+
 export interface IProfileRepository {
     edit(editProfileDTO: EditProfileDTO): Promise<Profile>;
     create(createProfileDTO: CreateProfileDTO): Promise<Profile>
