@@ -1,7 +1,7 @@
 # API Piupiuwer
 
 ## Criar usuário
-
+```
 const response = await axios({
       url: 'localhost:3333/register',
       method: 'POST',
@@ -11,9 +11,9 @@ const response = await axios({
           email
       }
    })
-
+```
 ## Fazer Login
-
+```
 const response = await axios({
     url: 'localhost:3333/login',
     method: 'POST',
@@ -22,9 +22,9 @@ const response = await axios({
         password
     }
 })
-
+```
 ## Editar Perfil
-
+```
 const response = await axios({
     url: 'localhost:3333/profile',
     method: 'POST',
@@ -39,9 +39,9 @@ const response = await axios({
         photo
     }
 })
-
+```
 ## Listar Usuários
-
+```
 const response = await axios({
       url: 'localhost:3333/users',
       method: 'GET',
@@ -49,9 +49,9 @@ const response = await axios({
           Authorization: `JWT ${token}`
       }
 })
-
+```
 ## Postar novo piu
-
+```
 const response = await axios({
       url: 'localhost:3333/pius',
       method: 'POST',
@@ -63,9 +63,9 @@ const response = await axios({
           text
       }
 })
-
+```
 ## Listar pius
-
+```
 const response = await axios({
       url: 'localhost:3333/pius',
       method: 'GET',
@@ -73,9 +73,9 @@ const response = await axios({
           Authorization: `JWT ${token}`
       }
 })
-
+```
 ## Excluir piu
-
+```
 const response = await axios({
       url: `localhost:3333/pius/${piuId}`,
       method: 'DELETE',
@@ -83,9 +83,9 @@ const response = await axios({
           Authorization: `JWT ${token}`
       }
 })
-
+```
 ## Dar like ou dislike em um piu
-
+```
  const response = await axios({
       url: 'localhost:3333/pius/like',
       method: 'POST',
@@ -97,4 +97,4 @@ const response = await axios({
           piuId
       }
    })
-
+```
