@@ -1,5 +1,5 @@
 import { getRepository, Repository } from "typeorm";
-import Piu from "../entities/Piu";
+import Piu from "../../entities/Piu";
 import { CreatePiuDTO, IPiuRepository } from "./IPiuRepository";
 
 class PiuRepository implements IPiuRepository {
@@ -21,7 +21,7 @@ class PiuRepository implements IPiuRepository {
     }
 
     public async list(): Promise<Piu[]> {
-        const pius = await this.ormRepository.find({relations: ['user']})
+        const pius = await this.ormRepository.find({relations: ['user', 'likes']})
         return pius;
     }
 

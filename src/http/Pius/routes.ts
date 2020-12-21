@@ -7,6 +7,7 @@ const piusController = new PiusController();
 
 PiusRouter.use(auth);
 PiusRouter.post('/pius', piusController.create)
+PiusRouter.post('/pius/like', piusController.like)
 PiusRouter.delete('/pius:piuId', piusController.delete)
 PiusRouter.get('/pius', piusController.list)
 

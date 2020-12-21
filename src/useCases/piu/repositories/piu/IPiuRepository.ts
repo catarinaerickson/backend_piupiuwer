@@ -1,4 +1,4 @@
-import Piu from "../entities/Piu";
+import Piu from "../../entities/Piu";
 
 export interface CreatePiuDTO {
     userId: string;

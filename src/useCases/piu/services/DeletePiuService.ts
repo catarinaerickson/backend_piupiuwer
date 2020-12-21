@@ -1,5 +1,5 @@
-import { IPiuRepository } from "../repositories/IPiuRepository";
-import PiuRepository from "../repositories/PiuRepository";
+import { IPiuRepository } from "../repositories/piu/IPiuRepository";
+import PiuRepository from "../repositories/piu/PiuRepository";
 
 class DeletePiuService {
     private piuRepository: IPiuRepository;

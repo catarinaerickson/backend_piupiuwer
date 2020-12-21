@@ -11,7 +11,7 @@ class UserRepository implements IUserRepository {
 
 
     public async list(): Promise<User[]> {
-        const users = await this.ormRepository.find();
+        const users = await this.ormRepository.find({relations: ['pius']});
         return users;
     }
 
@@ -39,9 +39,7 @@ class UserRepository implements IUserRepository {
         await this.ormRepository.save(user);
 
         return user;
-    }
-
-    
+    }  
 
     
 }

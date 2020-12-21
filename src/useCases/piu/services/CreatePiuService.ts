@@ -1,8 +1,8 @@
 import { IUserRepository } from "@useCases/user/repositories/user/IUserRepository";
 import UserRepository from "@useCases/user/repositories/user/UserRepository";
 import Piu from "../entities/Piu";
-import { IPiuRepository } from "../repositories/IPiuRepository";
-import PiuRepository from "../repositories/PiuRepository";
+import { IPiuRepository } from "../repositories/piu/IPiuRepository";
+import PiuRepository from "../repositories//piu/PiuRepository";
 
 interface Request {
     text: string;

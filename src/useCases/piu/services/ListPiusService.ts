@@ -1,6 +1,6 @@
 import Piu from "../entities/Piu";
-import { IPiuRepository } from "../repositories/IPiuRepository";
-import PiuRepository from "../repositories/PiuRepository";
+import { IPiuRepository } from "../repositories/piu/IPiuRepository";
+import PiuRepository from "../repositories/piu/PiuRepository";
 
 
 class ListPiuService {
@@ -12,7 +12,6 @@ class ListPiuService {
 
     public async execute(): Promise<Piu[]> {
         const pius = await this.piuRepository.list()
-        console.log(pius)
         return pius;
     }
 }
